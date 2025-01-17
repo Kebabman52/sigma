@@ -888,7 +888,7 @@ function library:Init(key)
         page.Size = UDim2.new(0, 412, 0, 358)
         page.BottomImage = "http://www.roblox.com/asset/?id=3062506202"
         page.MidImage = "http://www.roblox.com/asset/?id=3062506202"
-        page.ScrollBarThickness = 1
+        page.ScrollBarThickness = 2
         page.TopImage = "http://www.roblox.com/asset/?id=3062506202"
         page.ScrollBarImageColor3 = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))}
         page.Visible = false
