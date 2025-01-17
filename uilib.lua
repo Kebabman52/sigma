@@ -679,6 +679,7 @@ function library:Init(key)
     end
 
     local title = library.title
+    local titlesize = library.titlesize
     key = key or Enum.KeyCode.RightAlt
 
     local screen = Instance.new("ScreenGui")
@@ -754,7 +755,7 @@ function library:Init(key)
     headerLabel.Font = Enum.Font.Code
     headerLabel.Text = title
     headerLabel.TextColor3 = Color3.fromRGB(198, 198, 198)
-    headerLabel.TextSize = 16.000
+    headerLabel.TextSize = titlesize
     headerLabel.TextXAlignment = Enum.TextXAlignment.Left
     headerLabel.RichText = true
 
