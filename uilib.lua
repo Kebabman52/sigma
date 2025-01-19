@@ -683,6 +683,8 @@ function library:Init(key)
 
     local screen = Instance.new("ScreenGui")
     local backbackground = Instance.new("Frame")
+    local backbackgroundCorner = Instance.new("UICorner")
+    local backbackgroundGradient = Instance.new("UIGradient")
     local edge = Instance.new("Frame")
     local edgeCorner = Instance.new("UICorner")
     local background = Instance.new("Frame")
@@ -718,6 +720,22 @@ function library:Init(key)
     backbackground.Position = UDim2.new(0.5, 0, 0.5, 0)
     backbackground.Size = UDim2.new(0, 598, 0, 410)
 
+    backbackgroundCorner.CornerRadius = UDim.new(0, 2)
+    backbackgroundCorner.Name = "backbackgroundCorner"
+    backbackgroundCorner.Parent = backbackground
+
+    backbackgroundGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 34, 34)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 28, 28))}
+    backbackgroundGradient.Rotation = 90
+    backbackgroundGradient.Name = "backbackgroundGradient"
+    backbackgroundGradient.Parent = backbackground
+
+    drag(backbackground, 0.04)
+    local CanChangeVisibility = true
+    UserInputService.InputBegan:Connect(function(input)
+        if CanChangeVisibility and input.KeyCode == key then
+            backbackground.Visible = not backbackground.Visible
+        end
+    end)
     edge.Name = "edge"
     edge.Parent = backbackground
     edge.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -725,13 +743,7 @@ function library:Init(key)
     edge.Position = UDim2.new(0.5, 0, 0.5, 0)
     edge.Size = UDim2.new(0, 594, 0, 406)
 
-    drag(edge, 0.04)
-    local CanChangeVisibility = true
-    UserInputService.InputBegan:Connect(function(input)
-        if CanChangeVisibility and input.KeyCode == key then
-            edge.Visible = not edge.Visible
-        end
-    end)
+    
 
     edgeCorner.CornerRadius = UDim.new(0, 2)
     edgeCorner.Name = "edgeCorner"
@@ -742,7 +754,7 @@ function library:Init(key)
     background.AnchorPoint = Vector2.new(0.5, 0.5)
     background.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     background.Position = UDim2.new(0.5, 0, 0.5, 0)
-    background.Size = UDim2.new(0, 592, 0, 404)
+    background.Size = UDim2.new(0, 590, 0, 402)
     background.ClipsDescendants = true
 
     backgroundCorner.CornerRadius = UDim.new(0, 2)
@@ -809,7 +821,7 @@ function library:Init(key)
     tabButtons.BackgroundColor3 = Color3.fromRGB(235, 235, 235)
     tabButtons.ClipsDescendants = true
     tabButtons.Position = UDim2.new(0.5, 0, 0.5, 0)
-    tabButtons.Size = UDim2.new(0, 150, 0, 358)
+    tabButtons.Size = UDim2.new(0, 148, 0, 356)
 
     tabButtonCorner_2.CornerRadius = UDim.new(0, 2)
     tabButtonCorner_2.Name = "tabButtonCorner"
@@ -848,7 +860,7 @@ function library:Init(key)
     container.AnchorPoint = Vector2.new(0.5, 0.5)
     container.BackgroundColor3 = Color3.fromRGB(235, 235, 235)
     container.Position = UDim2.new(0.5, 0, 0.5, 0)
-    container.Size = UDim2.new(0, 412, 0, 358)
+    container.Size = UDim2.new(0, 410, 0, 356)
 
     containerCorner.CornerRadius = UDim.new(0, 2)
     containerCorner.Name = "containerCorner"
