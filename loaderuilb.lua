@@ -691,6 +691,7 @@ function library:Init(key)
     local headerPadding = Instance.new("UIPadding")
     local barFolder = Instance.new("Folder")
     local bar = Instance.new("Frame")
+    local barGradient = Instance.new("UIGradient")
     local barCorner = Instance.new("UICorner")
     local barLayout = Instance.new("UIListLayout")
     local tabButtonsEdge = Instance.new("Frame")
@@ -715,7 +716,7 @@ function library:Init(key)
     edge.AnchorPoint = Vector2.new(0.5, 0.5)
     edge.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
     edge.Position = UDim2.new(0.5, 0, 0.5, 0)
-    edge.Size = UDim2.new(0, 594, 0, 406)
+    edge.Size = UDim2.new(0, 594,0, 225)
 
     drag(edge, 0.04)
     local CanChangeVisibility = true
@@ -734,7 +735,7 @@ function library:Init(key)
     background.AnchorPoint = Vector2.new(0.5, 0.5)
     background.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     background.Position = UDim2.new(0.5, 0, 0.5, 0)
-    background.Size = UDim2.new(0, 592, 0, 404)
+    background.Size = UDim2.new(0, 590,0, 221)
     background.ClipsDescendants = true
 
     backgroundCorner.CornerRadius = UDim.new(0, 2)
@@ -775,6 +776,12 @@ function library:Init(key)
     bar.Size = UDim2.new(0, 592, 0, 1)
     bar.BorderSizePixel = 0
 
+    barGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))}
+    barGradient.Rotation = 90
+    barGradient.Name = "barGradient"
+    barGradient.Parent = bar
+    
+
     barCorner.CornerRadius = UDim.new(0, 2)
     barCorner.Name = "barCorner"
     barCorner.Parent = bar
@@ -789,7 +796,7 @@ function library:Init(key)
     tabButtonsEdge.AnchorPoint = Vector2.new(0.5, 0.5)
     tabButtonsEdge.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     tabButtonsEdge.Position = UDim2.new(0.1435, 0, 0.536000013, 0)
-    tabButtonsEdge.Size = UDim2.new(0, 52, 0, 360)
+    tabButtonsEdge.Size = UDim2.new(0, 152, 0, 167)
 
     tabButtonCorner.CornerRadius = UDim.new(0, 2)
     tabButtonCorner.Name = "tabButtonCorner"
@@ -801,7 +808,7 @@ function library:Init(key)
     tabButtons.BackgroundColor3 = Color3.fromRGB(235, 235, 235)
     tabButtons.ClipsDescendants = true
     tabButtons.Position = UDim2.new(0.5, 0, 0.5, 0)
-    tabButtons.Size = UDim2.new(0, 50, 0, 48)
+    tabButtons.Size = UDim2.new(0, 148, 0, 163)
 
     tabButtonCorner_2.CornerRadius = UDim.new(0, 2)
     tabButtonCorner_2.Name = "tabButtonCorner"
@@ -829,7 +836,7 @@ function library:Init(key)
     containerEdge.AnchorPoint = Vector2.new(0.5, 0.5)
     containerEdge.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     containerEdge.Position = UDim2.new(0.637000024, 0, 0.536000013, 0)
-    containerEdge.Size = UDim2.new(0, 414, 0, 360)
+    containerEdge.Size = UDim2.new(0, 414, 0, 167)
 
     tabButtonCorner_3.CornerRadius = UDim.new(0, 2)
     tabButtonCorner_3.Name = "tabButtonCorner"
@@ -840,7 +847,7 @@ function library:Init(key)
     container.AnchorPoint = Vector2.new(0.5, 0.5)
     container.BackgroundColor3 = Color3.fromRGB(235, 235, 235)
     container.Position = UDim2.new(0.5, 0, 0.5, 0)
-    container.Size = UDim2.new(0, 412, 0, 358)
+    container.Size = UDim2.new(0, 410, 0, 163)
 
     containerCorner.CornerRadius = UDim.new(0, 2)
     containerCorner.Name = "containerCorner"
