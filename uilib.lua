@@ -682,6 +682,7 @@ function library:Init(key)
     key = key or Enum.KeyCode.Insert or library.key
 
     local screen = Instance.new("ScreenGui")
+    local backbackground = Instance.new("Frame")
     local edge = Instance.new("Frame")
     local edgeCorner = Instance.new("UICorner")
     local background = Instance.new("Frame")
@@ -710,8 +711,15 @@ function library:Init(key)
     screen.Parent = CoreGuiService
     screen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
+    backbackground.Name = "backbackground"
+    backbackground.Parent = screen
+    backbackground.AnchorPoint = Vector2.new(0.5, 0.5)
+    backbackground.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+    backbackground.Position = UDim2.new(0.5, 0, 0.5, 0)
+    backbackground.Size = UDim2.new(0, 598, 0, 410)
+
     edge.Name = "edge"
-    edge.Parent = screen
+    edge.Parent = backbackground
     edge.AnchorPoint = Vector2.new(0.5, 0.5)
     edge.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
     edge.Position = UDim2.new(0.5, 0, 0.5, 0)
