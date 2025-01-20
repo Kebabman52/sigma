@@ -804,6 +804,12 @@ function library:Init(key)
     barLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
     barLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
+    barGradient.Name = "barGradient"
+    barGradient.parent = bar
+    barGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))}
+    barGradient.Rotation = 0
+
+
     tabButtonsEdge.Name = "tabButtonsEdge"
     tabButtonsEdge.Parent = background
     tabButtonsEdge.AnchorPoint = Vector2.new(0.5, 0.5)
