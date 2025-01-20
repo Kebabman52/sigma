@@ -76,6 +76,7 @@ end
 local library = {
     version = "0.2",
     title = title or "Exclusive " .. tostring(math.random(1,366)),
+    barGradient = barGradient or ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))},
     fps = 0,
     rank = "private"
 }
@@ -777,7 +778,7 @@ function library:Init(key)
     bar.BorderSizePixel = 0
 
     barGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))}
-    barGradient.Rotation = 90
+    barGradient.Rotation = 0
     barGradient.Name = "barGradient"
     barGradient.Parent = bar
     
