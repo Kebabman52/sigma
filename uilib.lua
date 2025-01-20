@@ -568,7 +568,7 @@ function library:InitNotifications(text, duration, callback)
         barGradient.Color = Color3.fromRGB(61, 135, 255)
         barGradient.Rotation = 0
         barGradient.Name = "backgroundGradient"
-        barGradient.Parent = background
+        barGradient.Parent = bar
 
         if type == "notification" then
             bar.BackgroundColor3 = Color3.fromRGB(61, 135, 255)
