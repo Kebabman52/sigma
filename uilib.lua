@@ -488,7 +488,7 @@ function library:Watermark(text)
     return WatermarkFunctions
 end
 
-function library:InitNotifications(text, duration, callback)
+function library:MenuNotifications(text, duration, callback)
     for i,v in next, CoreGuiService:GetChildren() do
         if v.name == "Notifications" then
             v:Destroy()
@@ -673,7 +673,7 @@ function library:InitNotifications(text, duration, callback)
     return Notification
 end
 
-function library:Init(key)
+function library:Menu(key)
     for _,v in next, CoreGuiService:GetChildren() do
         if v.Name == "screen" then
             v:Destroy()
