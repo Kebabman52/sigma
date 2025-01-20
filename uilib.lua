@@ -979,11 +979,11 @@ function library:Menu(key)
             labelPadding.PaddingRight = UDim.new(0, 6)
             labelPadding.PaddingTop = UDim.new(0, 6)
 
-            if alignment:lower():find("le") then
+            if alignment:lower():find("left") then
                 label.TextXAlignment = Enum.TextXAlignment.Left
-            elseif alignment:lower():find("cent") then
+            elseif alignment:lower():find("center") then
                 label.TextXAlignment = Enum.TextXAlignment.Center
-            elseif alignment:lower():find("ri") then
+            elseif alignment:lower():find("right") then
                 label.TextXAlignment = Enum.TextXAlignment.Right
             end
 
@@ -1014,12 +1014,12 @@ function library:Menu(key)
             end
             --
             function LabelFunctions:Align(new)
-                new = new or "le"
-                if new:lower():find("le") then
+                new = new or "left"
+                if new:lower():find("left") then
                     label.TextXAlignment = Enum.TextXAlignment.Left
-                elseif new:lower():find("cent") then
+                elseif new:lower():find("center") then
                     label.TextXAlignment = Enum.TextXAlignment.Center
-                elseif new:lower():find("ri") then
+                elseif new:lower():find("right") then
                     label.TextXAlignment = Enum.TextXAlignment.Right
                 end
             end
@@ -3024,11 +3024,10 @@ function library:Menu(key)
             return SelectorFunctions
         end
         --
-        function Components:NewSlider(text, suffix, compare, compareSign, values, callback)
+        function Components:NewSlider(text, compare, middlesign, values, callback)
             text = text or "slider"
-            suffix = suffix or ""
             compare = compare or false
-            compareSign = compareSign or "/"
+            middlesign = middlesign or "/"
             values = values or {
                 min = values.min or 0,
                 max = values.max or 100,
@@ -3188,14 +3187,14 @@ function library:Menu(key)
             CreateTween("slider_drag", 0.008)
 
             local ValueNum = values.default
-            local slideText = compare and ValueNum .. compareSign .. tostring(values.max - 1) .. suffix or ValueNum .. suffix
+            local slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) .. ValueNum
             sliderValue.Text = slideText
             local function UpdateSlider()
                 TweenService:Create(sliderIndicator, TweenTable["slider_drag"], {Size = UDim2.new(0, math.clamp(Mouse.X - sliderIndicator.AbsolutePosition.X, 0, sliderBackground.AbsoluteSize.X), 0, 12)}):Play()
 
                 ValueNum = math.floor((((tonumber(values.max) - tonumber(values.min)) / sliderBackground.AbsoluteSize.X) * sliderIndicator.AbsoluteSize.X) + tonumber(values.min)) or 0.00
 
-                local slideText = compare and ValueNum .. compareSign .. tostring(values.max - 1) .. suffix or ValueNum .. suffix
+                local slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) .. ValueNum
 
                 sliderValue.Text = slideText
 
@@ -3208,7 +3207,7 @@ function library:Menu(key)
                 moveconnection = Mouse.Move:Connect(function()
                     ValueNum = math.floor((((tonumber(values.max) - tonumber(values.min)) / sliderBackground.AbsoluteSize.X) * sliderIndicator.AbsoluteSize.X) + tonumber(values.min))
                     
-                    slideText = compare and ValueNum .. compareSign .. tostring(values.max - 1) .. suffix or ValueNum .. suffix
+                    slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) ..ValueNum
                     sliderValue.Text = slideText
 
                     pcall(function()
@@ -3225,7 +3224,7 @@ function library:Menu(key)
                     if Mouse_2.UserInputType == Enum.UserInputType.MouseButton1 then
                         ValueNum = math.floor((((tonumber(values.max) - tonumber(values.min)) / sliderBackground.AbsoluteSize.X) * sliderIndicator.AbsoluteSize.X) + tonumber(values.min))
                         
-                        slideText = compare and ValueNum .. compareSign .. tostring(values.max - 1) .. suffix or ValueNum .. suffix
+                        slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) .. ValueNum
                         sliderValue.Text = slideText
 
                         pcall(function()
@@ -3252,7 +3251,7 @@ function library:Menu(key)
                 local ncalc3 = ncalc2 * sliderBackground.AbsoluteSize.X
                 local nCalculation = ncalc3
                 sliderIndicator.Size = UDim2.new(0, nCalculation, 0, 12)
-                slideText = compare and new .. compareSign .. tostring(values.max - 1) .. suffix or new .. suffix
+                slideText = compare and new .. middlesign .. tostring(values.max - 1) .. new
                 sliderValue.Text = slideText
                 return SliderFunctions
             end
@@ -3260,14 +3259,14 @@ function library:Menu(key)
             function SliderFunctions:Max(new)
                 new = new or values.max
                 values.max = new + 1
-                slideText = compare and ValueNum .. compareSign .. tostring(values.max - 1) .. suffix or ValueNum .. suffix
+                slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) .. ValueNum
                 return SliderFunctions
             end
             --
             function SliderFunctions:Min(new)
                 new = new or values.min
                 values.min = new
-                slideText = compare and new .. compareSign .. tostring(values.max - 1) .. suffix or ValueNum .. suffix
+                slideText = compare and new .. middlesign .. tostring(values.max - 1) .. ValueNum
                 TweenService:Create(sliderIndicator, TweenTable["slider_drag"], {Size = UDim2.new(0, math.clamp(Mouse.X - sliderIndicator.AbsolutePosition.X, 0, sliderBackground.AbsoluteSize.X), 0, 12)}):Play()
                 return SliderFunctions
             end
