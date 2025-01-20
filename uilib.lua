@@ -691,6 +691,7 @@ function library:Init(key)
     local headerPadding = Instance.new("UIPadding")
     local barFolder = Instance.new("Folder")
     local bar = Instance.new("Frame")
+    local barGradient = Instance.new("UIGradient")
     local barCorner = Instance.new("UICorner")
     local barLayout = Instance.new("UIListLayout")
     local tabButtonsEdge = Instance.new("Frame")
@@ -776,6 +777,11 @@ function library:Init(key)
     bar.BackgroundTransparency = 0.200
     bar.Size = UDim2.new(0, 592, 0, 1)
     bar.BorderSizePixel = 0
+    
+    barGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))}
+    barGradient.Rotation = 0
+    barGradient.Name = "barGradient"
+    barGradient.Parent = bar
 
     barCorner.CornerRadius = UDim.new(0, 2)
     barCorner.Name = "barCorner"
