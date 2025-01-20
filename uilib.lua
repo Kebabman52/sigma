@@ -76,7 +76,6 @@ end
 local library = {
     version = "0.2",
     title = title or "Exclusive " .. tostring(math.random(1,366)),
-    barGradient = barGradient or ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))},
     fps = 0,
     rank = "private"
 }
@@ -683,9 +682,6 @@ function library:Init(key)
     key = key or Enum.KeyCode.Insert or library.key
 
     local screen = Instance.new("ScreenGui")
-    local backbackground = Instance.new("Frame")
-    local backbackgroundCorner = Instance.new("UICorner")
-    local backbackgroundGradient = Instance.new("UIGradient")
     local edge = Instance.new("Frame")
     local edgeCorner = Instance.new("UICorner")
     local background = Instance.new("Frame")
@@ -714,31 +710,16 @@ function library:Init(key)
     screen.Parent = CoreGuiService
     screen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-    backbackground.Name = "backbackground"
-    backbackground.Parent = screen
-    backbackground.AnchorPoint = Vector2.new(0.5, 0.5)
-    backbackground.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-    backbackground.Position = UDim2.new(0.5, 0, 0.5, 0)
-    backbackground.Size = UDim2.new(0, 598, 0, 410)
 
-    backbackgroundCorner.CornerRadius = UDim.new(0, 2)
-    backbackgroundCorner.Name = "backbackgroundCorner"
-    backbackgroundCorner.Parent = backbackground
-
-    backbackgroundGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 34, 34)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 28, 28))}
-    backbackgroundGradient.Rotation = 90
-    backbackgroundGradient.Name = "backbackgroundGradient"
-    backbackgroundGradient.Parent = backbackground
-
-    drag(backbackground, 0.04)
+    drag(edge, 0.04)
     local CanChangeVisibility = true
     UserInputService.InputBegan:Connect(function(input)
         if CanChangeVisibility and input.KeyCode == key then
-            backbackground.Visible = not backbackground.Visible
+            edge.Visible = not edge.Visible
         end
     end)
     edge.Name = "edge"
-    edge.Parent = backbackground
+    edge.Parent = screen
     edge.AnchorPoint = Vector2.new(0.5, 0.5)
     edge.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
     edge.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -804,11 +785,6 @@ function library:Init(key)
     barLayout.Parent = barFolder
     barLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
     barLayout.SortOrder = Enum.SortOrder.LayoutOrder
-
-    barGradient.Name = "barGradient"
-    barGradient.parent = bar
-    barGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))}
-    barGradient.Rotation = 0
 
 
     tabButtonsEdge.Name = "tabButtonsEdge"
