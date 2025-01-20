@@ -530,7 +530,6 @@ function library:MenuNotifications(text, duration, callback)
         local bar = Instance.new("Frame")
         local barCorner = Instance.new("UICorner")
         local barLayout = Instance.new("UIListLayout")
-        local barGradient = Instance.new("UIGradient")
         local backgroundGradient = Instance.new("UIGradient")
         local backgroundCorner = Instance.new("UICorner")
         local notifText = Instance.new("TextLabel")
@@ -565,10 +564,6 @@ function library:MenuNotifications(text, duration, callback)
         bar.BackgroundTransparency = 0.200
         bar.Size = UDim2.new(0, 0, 0, 1)
 
-        barGradient.Color = Color3.fromRGB(61, 135, 255)
-        barGradient.Rotation = 0
-        barGradient.Name = "backgroundGradient"
-        barGradient.Parent = bar
 
         if type == "notification" then
             bar.BackgroundColor3 = Color3.fromRGB(61, 135, 255)
@@ -582,7 +577,6 @@ function library:MenuNotifications(text, duration, callback)
             bar.BackgroundColor3 = Color3.fromRGB(126, 117, 255)
         elseif type == "newwww" then
             bar.BackgroundColor3 = Color3.fromRGB(61, 135, 255)
-            barGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))}
         end
     
         barCorner.CornerRadius = UDim.new(0, 2)
