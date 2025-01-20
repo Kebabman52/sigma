@@ -488,7 +488,7 @@ function library:Watermark(text)
     return WatermarkFunctions
 end
 
-function library:MenuNotifications(text, duration, callback)
+function library:InitNotifications(text, duration, callback)
     for i,v in next, CoreGuiService:GetChildren() do
         if v.name == "Notifications" then
             v:Destroy()
@@ -560,7 +560,7 @@ function library:MenuNotifications(text, duration, callback)
     
         bar.Name = "bar"
         bar.Parent = barFolder
-        bar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        bar.BackgroundColor3 = Color3.fromRGB(61, 135, 255)
         bar.BackgroundTransparency = 0.200
         bar.Size = UDim2.new(0, 0, 0, 1)
 
@@ -673,7 +673,7 @@ function library:MenuNotifications(text, duration, callback)
     return Notification
 end
 
-function library:Menu(key)
+function library:Init(key)
     for _,v in next, CoreGuiService:GetChildren() do
         if v.Name == "screen" then
             v:Destroy()
@@ -862,12 +862,12 @@ function library:Menu(key)
     containerGradient.Name = "containerGradient"
     containerGradient.Parent = container
 
-    local MenuTab = {
+    local TabLibrary = {
         IsFirst = true,
         CurrentTab = ""
     }
     CreateTween("tab_text_colour", 0.16)
-    function MenuTab:NewTab(title)
+    function TabLibrary:NewTab(title)
         title = title or "tab"
 
         local tabButton = Instance.new("TextButton")
@@ -916,14 +916,14 @@ function library:Menu(key)
         pagePadding.PaddingRight = UDim.new(0, 6)
         pagePadding.PaddingTop = UDim.new(0, 6)
 
-        if MenuTab.IsFirst then
+        if TabLibrary.IsFirst then
             page.Visible = true
             tabButton.TextColor3 = Color3.fromRGB(61, 135, 255)
-            MenuTab.CurrentTab = title
+            TabLibrary.CurrentTab = title
         end
         
         tabButton.MouseButton1Click:Connect(function()
-            MenuTab.CurrentTab = title
+            TabLibrary.CurrentTab = title
             for i,v in pairs(container:GetChildren()) do 
                 if v:IsA("ScrollingFrame") then
                     v.Visible = false
@@ -947,7 +947,7 @@ function library:Menu(key)
         page.ChildAdded:Connect(UpdatePageSize)
         page.ChildRemoved:Connect(UpdatePageSize)
 
-        MenuTab.IsFirst = false
+        TabLibrary.IsFirst = false
 
         CreateTween("hover", 0.16)
         local Components = {}
@@ -3349,7 +3349,7 @@ function library:Menu(key)
         end
         --
         function Components:Open()
-            MenuTab.CurrentTab = title
+            TabLibrary.CurrentTab = title
             for i,v in pairs(container:GetChildren()) do 
                 if v:IsA("ScrollingFrame") then
                     v.Visible = false
@@ -3396,24 +3396,24 @@ function library:Menu(key)
         return Components
     end
     --
-    function MenuTab:Remove()
+    function TabLibrary:Remove()
         screen:Destroy()
 
-        return MenuTab
+        return TabLibrary
     end
     --
-    function MenuTab:Text(text)
+    function TabLibrary:Text(text)
         text = text or "new text"
         headerLabel.Text = text
 
-        return MenuTab
+        return TabLibrary
     end
     --
-    function MenuTab:UpdateKeybind(new)
+    function TabLibrary:UpdateKeybind(new)
         new = new or key
         key = new
-        return MenuTab
+        return TabLibrary
     end
-    return MenuTab
+    return TabLibrary
 end
 return library
