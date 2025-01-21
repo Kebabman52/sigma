@@ -525,23 +525,35 @@ function library:Menu(key)
         title = title or "tab"
 
         local tabButton = Instance.new("TextButton")
+        local tabButtonsGradient = Instance.new("UIGradient")
+        local tabButtonStroke = Instance.new("UIStroke")
         local page = Instance.new("ScrollingFrame")
         local pageLayout = Instance.new("UIListLayout")
         local pagePadding = Instance.new("UIPadding")
 
         tabButton.Name = "tabButton"
         tabButton.Parent = tabButtons
-        tabButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        tabButton.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
         tabButton.BackgroundTransparency = 0.000
         tabButton.ClipsDescendants = true
         tabButton.Position = UDim2.new(-0.0281690136, 0, 0, 0)
-        tabButton.Size = UDim2.new(0, 75, 0, 22)
+        tabButton.Size = UDim2.new(0, 125, 0, 22)
         tabButton.AutoButtonColor = false
         tabButton.Font = Enum.Font.Code
         tabButton.Text = title
         tabButton.TextColor3 = Color3.fromRGB(170, 170, 170)
         tabButton.TextSize = 15.000
         tabButton.RichText = true
+
+        tabButtonsGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 34, 34)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 28, 28))}
+        tabButtonsGradient.Rotation = 90
+        tabButtonsGradient.Name = "tabButtonsGradient"
+        tabButtonsGradient.Parent = tabButton
+
+        tabButtonStroke.Name = "TabButtonStroke"
+        tabButtonStroke.Parent = tabButton
+        tabButtonStroke.Color = Color3.fromRGB(61, 135, 255)
+        tabButtonStroke.Thickness = 1
 
         page.Name = "page"
         page.Parent = container
