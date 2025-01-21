@@ -1665,23 +1665,21 @@ function library:Menu(key)
             default = default or ""
             place = place or ""
             format = format or "all" -- all, numbers, lower, upper
-            type = type or "small" -- small, medium, large
+            type = type or "sameline" -- sameline, normal
             autoexec = autoexec or true
             autoclear = autoclear or false
             callback = callback or function() end
 
-            if type == "small" then
+            if type == "sameline" then
                 local textboxFrame = Instance.new("Frame")
                 local textboxFolder = Instance.new("Folder")
                 local textboxFolderLayout = Instance.new("UIListLayout")
                 local textbox = Instance.new("Frame")
                 local textboxLayout = Instance.new("UIListLayout")
                 local textboxStraint = Instance.new("UISizeConstraint")
-                local textboxCorner = Instance.new("UICorner")
                 local textboxTwo = Instance.new("Frame")
                 local textboxTwoStraint = Instance.new("UISizeConstraint")
                 local textboxTwoGradient = Instance.new("UIGradient")
-                local textboxTwoCorner = Instance.new("UICorner")
                 local textBoxValues = Instance.new("TextBox")
                 local textBoxValuesStraint = Instance.new("UISizeConstraint")
                 local textboxTwoLayout = Instance.new("UIListLayout")
@@ -1722,10 +1720,6 @@ function library:Menu(key)
                 textboxStraint.Parent = textbox
                 textboxStraint.MinSize = Vector2.new(50, 22)
     
-                textboxCorner.CornerRadius = UDim.new(0, 2)
-                textboxCorner.Name = "textboxCorner"
-                textboxCorner.Parent = textbox
-    
                 textboxTwo.Name = "textboxTwo"
                 textboxTwo.Parent = textbox
                 textboxTwo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1739,10 +1733,6 @@ function library:Menu(key)
                 textboxTwoGradient.Rotation = 90
                 textboxTwoGradient.Name = "textboxTwoGradient"
                 textboxTwoGradient.Parent = textboxTwo
-    
-                textboxTwoCorner.CornerRadius = UDim.new(0, 2)
-                textboxTwoCorner.Name = "textboxTwoCorner"
-                textboxTwoCorner.Parent = textboxTwo
     
                 textBoxValues.Name = "textBoxValues"
                 textBoxValues.Parent = textboxTwo
@@ -1953,18 +1943,16 @@ function library:Menu(key)
                     return TextboxFunctions
                 end
                 return TextboxFunctions
-            elseif type == "medium" then
+            elseif type == "normal" then
                 local textboxFrame = Instance.new("Frame")
                 local textboxFolder = Instance.new("Folder")
                 local textboxFolderLayout = Instance.new("UIListLayout")
                 local textbox = Instance.new("Frame")
                 local textboxLayout = Instance.new("UIListLayout")
                 local textboxStraint = Instance.new("UISizeConstraint")
-                local textboxCorner = Instance.new("UICorner")
                 local textboxTwo = Instance.new("Frame")
                 local textboxTwoStraint = Instance.new("UISizeConstraint")
                 local textboxTwoGradient = Instance.new("UIGradient")
-                local textboxTwoCorner = Instance.new("UICorner")
                 local textBoxValues = Instance.new("TextBox")
                 local textBoxValuesStraint = Instance.new("UISizeConstraint")
                 local textBoxValuesPadding = Instance.new("UIPadding")
@@ -2006,10 +1994,6 @@ function library:Menu(key)
                 textboxStraint.MaxSize = Vector2.new(396, 22)
                 textboxStraint.MinSize = Vector2.new(396, 22)
 
-                textboxCorner.CornerRadius = UDim.new(0, 2)
-                textboxCorner.Name = "textboxCorner"
-                textboxCorner.Parent = textbox
-
                 textboxTwo.Name = "textboxTwo"
                 textboxTwo.Parent = textbox
                 textboxTwo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2024,10 +2008,6 @@ function library:Menu(key)
                 textboxTwoGradient.Rotation = 90
                 textboxTwoGradient.Name = "textboxTwoGradient"
                 textboxTwoGradient.Parent = textboxTwo
-
-                textboxTwoCorner.CornerRadius = UDim.new(0, 2)
-                textboxTwoCorner.Name = "textboxTwoCorner"
-                textboxTwoCorner.Parent = textboxTwo
 
                 textBoxValues.Name = "textBoxValues"
                 textBoxValues.Parent = textboxTwo
@@ -2134,237 +2114,6 @@ function library:Menu(key)
                         callback(textBoxValues.Text)
                     end
                 end)
-
-                local TextboxFunctions = {}
-                function TextboxFunctions:Input(new)
-                    new = new or textBoxValues.Text
-                    textBoxValues = new
-                    return TextboxFunctions
-                end
-                --
-                function TextboxFunctions:Fire()
-                    callback(textBoxValues.Text)
-                    return TextboxFunctions
-                end
-                --
-                function TextboxFunctions:SetFunction(new)
-                    new = new or callback
-                    callback = new
-                    return TextboxFunctions
-                end
-                --
-                function TextboxFunctions:Text(new)
-                    new = new or textboxLabel.Text
-                    textboxLabel.Text = new
-                    return TextboxFunctions
-                end
-                --
-                function TextboxFunctions:Hide()
-                    textboxFrame.Visible = false
-                    return TextboxFunctions
-                end
-                --
-                function TextboxFunctions:Show()
-                    textboxFrame.Visible = true
-                    return TextboxFunctions
-                end
-                --
-                function TextboxFunctions:Remove()
-                    textboxFrame:Destroy()
-                    return TextboxFunctions
-                end
-                --
-                function TextboxFunctions:Place(new)
-                    new = new or textBoxValues.PlaceholderText
-                    textBoxValues.PlaceholderText = new
-                    return TextboxFunctions
-                end
-                return TextboxFunctions
-            elseif type == "large" then
-                local textboxFrame = Instance.new("Frame")
-                local textboxFolder = Instance.new("Folder")
-                local textboxFolderLayout = Instance.new("UIListLayout")
-                local textbox = Instance.new("Frame")
-                local textboxLayout = Instance.new("UIListLayout")
-                local textboxStraint = Instance.new("UISizeConstraint")
-                local textboxCorner = Instance.new("UICorner")
-                local textboxTwo = Instance.new("Frame")
-                local textboxTwoStraint = Instance.new("UISizeConstraint")
-                local textboxTwoGradient = Instance.new("UIGradient")
-                local textboxTwoCorner = Instance.new("UICorner")
-                local textBoxValues = Instance.new("TextBox")
-                local textBoxValuesStraint = Instance.new("UISizeConstraint")
-                local textBoxValuesPadding = Instance.new("UIPadding")
-                local textboxTwoLayout = Instance.new("UIListLayout")
-                local textboxLabel = Instance.new("TextLabel")
-                local textboxPadding = Instance.new("UIPadding")
-
-                textboxFrame.Name = "textboxFrame"
-                textboxFrame.Parent = page
-                textboxFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                textboxFrame.BackgroundTransparency = 1.000
-                textboxFrame.ClipsDescendants = true
-                textboxFrame.Position = UDim2.new(0.00499999989, 0, 0.268786132, 0)
-                textboxFrame.Size = UDim2.new(0, 396, 0, 142)
-
-                textboxFolder.Name = "textboxFolder"
-                textboxFolder.Parent = textboxFrame
-
-                textboxFolderLayout.Name = "textboxFolderLayout"
-                textboxFolderLayout.Parent = textboxFolder
-                textboxFolderLayout.FillDirection = Enum.FillDirection.Horizontal
-                textboxFolderLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-                textboxFolderLayout.SortOrder = Enum.SortOrder.LayoutOrder
-                textboxFolderLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
-                textboxFolderLayout.Padding = UDim.new(0, 4)
-
-                textbox.Name = "textbox"
-                textbox.Parent = textboxFolder
-                textbox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-                textbox.Position = UDim2.new(0, 0, 0.169014081, 0)
-                textbox.Size = UDim2.new(0, 396, 0, 118)
-
-                textboxLayout.Name = "textboxLayout"
-                textboxLayout.Parent = textbox
-                textboxLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-                textboxLayout.SortOrder = Enum.SortOrder.LayoutOrder
-                textboxLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-
-                textboxStraint.Name = "textboxStraint"
-                textboxStraint.Parent = textbox
-                textboxStraint.MaxSize = Vector2.new(396, 118)
-                textboxStraint.MinSize = Vector2.new(396, 118)
-
-                textboxCorner.CornerRadius = UDim.new(0, 2)
-                textboxCorner.Name = "textboxCorner"
-                textboxCorner.Parent = textbox
-
-                textboxTwo.Name = "textboxTwo"
-                textboxTwo.Parent = textbox
-                textboxTwo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                textboxTwo.Size = UDim2.new(0, 394, 0, 114)
-
-                textboxTwoStraint.Name = "textboxTwoStraint"
-                textboxTwoStraint.Parent = textboxTwo
-                textboxTwoStraint.MaxSize = Vector2.new(394, 116)
-                textboxTwoStraint.MinSize = Vector2.new(394, 116)
-
-                textboxTwoGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 34, 34)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 28, 28))}
-                textboxTwoGradient.Rotation = 90
-                textboxTwoGradient.Name = "textboxTwoGradient"
-                textboxTwoGradient.Parent = textboxTwo
-
-                textboxTwoCorner.CornerRadius = UDim.new(0, 2)
-                textboxTwoCorner.Name = "textboxTwoCorner"
-                textboxTwoCorner.Parent = textboxTwo
-
-                textBoxValues.Name = "textBoxValues"
-                textBoxValues.Parent = textboxTwo
-                textBoxValues.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                textBoxValues.BackgroundTransparency = 1.000
-                textBoxValues.ClipsDescendants = true
-                textBoxValues.Size = UDim2.new(0, 394, 0, 114)
-                textBoxValues.Font = Enum.Font.Code
-                textBoxValues.PlaceholderColor3 = Color3.fromRGB(140, 140, 140)
-                textBoxValues.PlaceholderText = place
-                textBoxValues.Text = default
-                textBoxValues.TextColor3 = Color3.fromRGB(190, 190, 190)
-                textBoxValues.TextSize = 14.000
-                textBoxValues.TextWrapped = true
-                textBoxValues.TextXAlignment = Enum.TextXAlignment.Left
-                textBoxValues.TextYAlignment = Enum.TextYAlignment.Top
-
-                textBoxValuesStraint.Name = "textBoxValuesStraint"
-                textBoxValuesStraint.Parent = textBoxValues
-                textBoxValuesStraint.MaxSize = Vector2.new(394, 116)
-                textBoxValuesStraint.MinSize = Vector2.new(394, 116)
-
-                textBoxValuesPadding.Name = "textBoxValuesPadding"
-                textBoxValuesPadding.Parent = textBoxValues
-                textBoxValuesPadding.PaddingBottom = UDim.new(0, 2)
-                textBoxValuesPadding.PaddingLeft = UDim.new(0, 2)
-                textBoxValuesPadding.PaddingRight = UDim.new(0, 2)
-                textBoxValuesPadding.PaddingTop = UDim.new(0, 2)
-
-                textboxTwoLayout.Name = "textboxTwoLayout"
-                textboxTwoLayout.Parent = textboxTwo
-                textboxTwoLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-                textboxTwoLayout.SortOrder = Enum.SortOrder.LayoutOrder
-                textboxTwoLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-
-                textboxLabel.Name = "textboxLabel"
-                textboxLabel.Parent = textboxFrame
-                textboxLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                textboxLabel.BackgroundTransparency = 1.000
-                textboxLabel.Size = UDim2.new(0, 396, 0, 24)
-                textboxLabel.Font = Enum.Font.Code
-                textboxLabel.Text = text
-                textboxLabel.TextColor3 = Color3.fromRGB(190, 190, 190)
-                textboxLabel.TextSize = 14.000
-                textboxLabel.TextWrapped = true
-                textboxLabel.TextXAlignment = Enum.TextXAlignment.Left
-                textboxLabel.RichText = true
-
-                textboxPadding.Name = "textboxPadding"
-                textboxPadding.Parent = textboxLabel
-                textboxPadding.PaddingBottom = UDim.new(0, 6)
-                textboxPadding.PaddingLeft = UDim.new(0, 2)
-                textboxPadding.PaddingRight = UDim.new(0, 6)
-                textboxPadding.PaddingTop = UDim.new(0, 6)
-
-                CreateTween("TextBox", 0.07)
-
-                textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "numbers" then
-                        textBoxValues.Text = textBoxValues.Text:gsub("%D+", "")
-                    end
-                end)
-
-                textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "lower" then
-                        textBoxValues.Text = textBoxValues.Text:lower()
-                    end
-                end)
-
-                textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "upper" then
-                        textBoxValues.Text = textBoxValues.Text:upper()
-                    end
-                end)
-
-                textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "all" or format == "" then
-                        textBoxValues.Text = textBoxValues.Text
-                    end
-                end)
-
-                textboxFrame.MouseEnter:Connect(function()
-                    TweenService:Create(textboxLabel, TweenTable["TextBox"], {TextColor3 = Color3.fromRGB(210, 210, 210)}):Play()
-                end)
-
-                textboxFrame.MouseLeave:Connect(function()
-                    TweenService:Create(textboxLabel, TweenTable["TextBox"], {TextColor3 = Color3.fromRGB(190, 190, 190)}):Play()
-                end)
-
-                textBoxValues.Focused:Connect(function()
-                    TweenService:Create(textbox, TweenTable["TextBox"], {BackgroundColor3 = Color3.fromRGB(61, 135, 255)}):Play()
-                end)
-
-                textBoxValues.FocusLost:Connect(function()
-                    TweenService:Create(textbox, TweenTable["TextBox"], {BackgroundColor3 = Color3.fromRGB(60, 60, 60)}):Play()
-                end)
-
-                textBoxValues.FocusLost:Connect(function(enterPressed)
-                    if not autoexec then
-                        if enterPressed then
-                            callback(textBoxValues.Text)
-                        end
-                    else
-                        callback(textBoxValues.Text)
-                    end
-                end)
-
-                UpdatePageSize()
 
                 local TextboxFunctions = {}
                 function TextboxFunctions:Input(new)
