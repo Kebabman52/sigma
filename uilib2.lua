@@ -2885,8 +2885,7 @@ function library:Menu(key)
 
                 ValueNum = math.floor((((tonumber(values.max) - tonumber(values.min)) / sliderBackground.AbsoluteSize.X) * sliderIndicator.AbsoluteSize.X) + tonumber(values.min)) or 0.00
 
-                local slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) .. ValueNum
-
+                local slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) or ValueNum
                 sliderValue.Text = slideText
 
                 pcall(function()
