@@ -376,28 +376,21 @@ function library:Menu(key)
 
     local screen = Instance.new("ScreenGui")
     local edge = Instance.new("Frame")
-    local edgeCorner = Instance.new("UICorner")
     local background = Instance.new("Frame")
-    local backgroundCorner = Instance.new("UICorner")
     local backgroundGradient = Instance.new("UIGradient")
     local headerLabel = Instance.new("TextLabel")
     local headerPadding = Instance.new("UIPadding")
     local barFolder = Instance.new("Folder")
     local bar = Instance.new("Frame")
     local barGradient = Instance.new("UIGradient")
-    local barCorner = Instance.new("UICorner")
     local barLayout = Instance.new("UIListLayout")
     local tabButtonsEdge = Instance.new("Frame")
-    local tabButtonCorner = Instance.new("UICorner")
     local tabButtons = Instance.new("Frame")
-    local tabButtonCorner_2 = Instance.new("UICorner")
     local tabButtonsGradient = Instance.new("UIGradient")
     local tabButtonLayout = Instance.new("UIListLayout")
     local tabButtonPadding = Instance.new("UIPadding")
     local containerEdge = Instance.new("Frame")
-    local tabButtonCorner_3 = Instance.new("UICorner")
     local container = Instance.new("Frame")
-    local containerCorner = Instance.new("UICorner")
     local containerGradient = Instance.new("UIGradient")
 
     screen.Name = "screen"
@@ -419,12 +412,6 @@ function library:Menu(key)
     edge.Position = UDim2.new(0.5, 0, 0.5, 0)
     edge.Size = UDim2.new(0, 594, 0, 406)
 
-    
-
-    edgeCorner.CornerRadius = UDim.new(0, 2)
-    edgeCorner.Name = "edgeCorner"
-    edgeCorner.Parent = edge
-
     background.Name = "background"
     background.Parent = edge
     background.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -432,10 +419,6 @@ function library:Menu(key)
     background.Position = UDim2.new(0.5, 0, 0.5, 0)
     background.Size = UDim2.new(0, 590, 0, 402)
     background.ClipsDescendants = true
-
-    backgroundCorner.CornerRadius = UDim.new(0, 2)
-    backgroundCorner.Name = "backgroundCorner"
-    backgroundCorner.Parent = background
 
     backgroundGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 34, 34)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 28, 28))}
     backgroundGradient.Rotation = 90
@@ -476,10 +459,6 @@ function library:Menu(key)
     barGradient.Name = "barGradient"
     barGradient.Parent = bar
 
-    barCorner.CornerRadius = UDim.new(0, 2)
-    barCorner.Name = "barCorner"
-    barCorner.Parent = bar
-
     barLayout.Name = "barLayout"
     barLayout.Parent = barFolder
     barLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -493,10 +472,6 @@ function library:Menu(key)
     tabButtonsEdge.Position = UDim2.new(0.1435, 0, 0.536000013, 0)
     tabButtonsEdge.Size = UDim2.new(0, 152, 0, 360)
 
-    tabButtonCorner.CornerRadius = UDim.new(0, 2)
-    tabButtonCorner.Name = "tabButtonCorner"
-    tabButtonCorner.Parent = tabButtonsEdge
-
     tabButtons.Name = "tabButtons"
     tabButtons.Parent = tabButtonsEdge
     tabButtons.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -504,10 +479,6 @@ function library:Menu(key)
     tabButtons.ClipsDescendants = true
     tabButtons.Position = UDim2.new(0.5, 0, 0.5, 0)
     tabButtons.Size = UDim2.new(0, 148, 0, 356)
-
-    tabButtonCorner_2.CornerRadius = UDim.new(0, 2)
-    tabButtonCorner_2.Name = "tabButtonCorner"
-    tabButtonCorner_2.Parent = tabButtons
 
     tabButtonsGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 34, 34)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 28, 28))}
     tabButtonsGradient.Rotation = 90
@@ -533,20 +504,12 @@ function library:Menu(key)
     containerEdge.Position = UDim2.new(0.637000024, 0, 0.536000013, 0)
     containerEdge.Size = UDim2.new(0, 414, 0, 360)
 
-    tabButtonCorner_3.CornerRadius = UDim.new(0, 2)
-    tabButtonCorner_3.Name = "tabButtonCorner"
-    tabButtonCorner_3.Parent = containerEdge
-
     container.Name = "container"
     container.Parent = containerEdge
     container.AnchorPoint = Vector2.new(0.5, 0.5)
     container.BackgroundColor3 = Color3.fromRGB(235, 235, 235)
     container.Position = UDim2.new(0.5, 0, 0.5, 0)
     container.Size = UDim2.new(0, 410, 0, 356)
-
-    containerCorner.CornerRadius = UDim.new(0, 2)
-    containerCorner.Name = "containerCorner"
-    containerCorner.Parent = container
 
     containerGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 34, 34)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 28, 28))}
     containerGradient.Rotation = 90
@@ -832,10 +795,8 @@ function library:Menu(key)
                     callback_2 = callback_2 or function() end
     
                     local button = Instance.new("TextButton")
-                    local buttonCorner = Instance.new("UICorner")
                     local buttonBackground = Instance.new("Frame")
                     local buttonGradient = Instance.new("UIGradient")
-                    local buttonBackCorner = Instance.new("UICorner")
                     local buttonLabel = Instance.new("TextLabel")
         
                     button.Name = "button"
@@ -848,10 +809,6 @@ function library:Menu(key)
                     button.TextColor3 = Color3.fromRGB(0, 0, 0)
                     button.TextSize = 14.000
         
-                    buttonCorner.CornerRadius = UDim.new(0, 2)
-                    buttonCorner.Name = "buttonCorner"
-                    buttonCorner.Parent = button
-        
                     buttonBackground.Name = "buttonBackground"
                     buttonBackground.Parent = button
                     buttonBackground.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -863,11 +820,7 @@ function library:Menu(key)
                     buttonGradient.Rotation = 90
                     buttonGradient.Name = "buttonGradient"
                     buttonGradient.Parent = buttonBackground
-        
-                    buttonBackCorner.CornerRadius = UDim.new(0, 2)
-                    buttonBackCorner.Name = "buttonBackCorner"
-                    buttonBackCorner.Parent = buttonBackground
-        
+
                     buttonLabel.Name = "buttonLabel"
                     buttonLabel.Parent = buttonBackground
                     buttonLabel.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2116,6 +2069,7 @@ function library:Menu(key)
             end
         end
         --
+        --[[
         function Components:NewSelector(text, default, list, callback)
             text = text or "selector"
             default = default or ". . ."
@@ -2415,9 +2369,9 @@ function library:Menu(key)
                 return SelectorFunctions
             end
             return SelectorFunctions
-        end
+        end]]
         --
-        --[[
+
         function Components:NewSlider(text, compare, middlesign, values, callback)
             text = text or "slider"
             compare = compare or false
@@ -2676,7 +2630,7 @@ function library:Menu(key)
                 return SliderFunctions
             end
             return SliderFunctions
-        end]]
+        end
         -- 
         --[[
         function Components:NewSeperator()
