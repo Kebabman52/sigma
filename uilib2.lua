@@ -532,10 +532,10 @@ function library:Menu(key)
         tabButton.Name = "tabButton"
         tabButton.Parent = tabButtons
         tabButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        tabButton.BackgroundTransparency = 1.000
+        tabButton.BackgroundTransparency = 0.000
         tabButton.ClipsDescendants = true
         tabButton.Position = UDim2.new(-0.0281690136, 0, 0, 0)
-        tabButton.Size = UDim2.new(0, 150, 0, 22)
+        tabButton.Size = UDim2.new(0, 75, 0, 22)
         tabButton.AutoButtonColor = false
         tabButton.Font = Enum.Font.Code
         tabButton.Text = title
