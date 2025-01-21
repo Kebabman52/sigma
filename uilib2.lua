@@ -1635,14 +1635,12 @@ function library:Menu(key)
             return KeybindFunctions
         end
         --
-        function Components:NewTextbox(text, default, place, format, type, autoexec, autoclear, callback)
+        function Components:NewTextbox(text, normal, placehold, allowed, type, callback)
             text = text or "text box"
-            default = default or ""
-            place = place or ""
-            format = format or "all" -- all, numbers, lower, upper
+            normal = normal or ""
+            placehold = placehold or ""
+            allowed = allowed or "all" -- all, numbers, lower, upper
             type = type or "sameline" -- sameline, normal
-            autoexec = autoexec or true
-            autoclear = autoclear or false
             callback = callback or function() end
 
             if type == "sameline" then
@@ -1717,11 +1715,11 @@ function library:Menu(key)
                 textBoxValues.Size = UDim2.new(0, 131, 0, 20)
                 textBoxValues.Font = Enum.Font.Code
                 textBoxValues.PlaceholderColor3 = Color3.fromRGB(140, 140, 140)
-                textBoxValues.PlaceholderText = place
+                textBoxValues.PlaceholderText = placehold
                 textBoxValues.Text = ""
                 textBoxValues.TextColor3 = Color3.fromRGB(190, 190, 190)
                 textBoxValues.TextSize = 14.000
-                textBoxValues.ClearTextOnFocus = autoclear
+                textBoxValues.ClearTextOnFocus = false
                 textBoxValues.ClipsDescendants = true
                 textBoxValues.TextXAlignment = Enum.TextXAlignment.Right
 
@@ -1777,7 +1775,7 @@ function library:Menu(key)
                 
                 function ResizeTextStraints()
                     ForcedMinSize = TextService:GetTextSize(textBoxValues.PlaceholderText, textBoxValues.TextSize, textBoxValues.Font, Vector2.new(math.huge,math.huge))
-                    if place ~= "" then
+                    if plplaceholdace ~= "" then
                         textboxStraint.MinSize = Vector2.new(ForcedMinSize.X + 10, 22)
                         textboxTwoStraint.MinSize = Vector2.new(ForcedMinSize.X + 8, 20)
                         textBoxValuesStraint.MinSize = Vector2.new(ForcedMinSize.X + 8, 20)
@@ -1821,25 +1819,25 @@ function library:Menu(key)
                 textboxLabel:GetPropertyChangedSignal("Text"):Connect(SetMaxSize)
 
                 textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "numbers" then
+                    if allowed == "numbers" then
                         textBoxValues.Text = textBoxValues.Text:gsub("%D+", "")
                     end
                 end)
 
                 textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "lower" then
+                    if allowed == "lower" then
                         textBoxValues.Text = textBoxValues.Text:lower()
                     end
                 end)
 
                 textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "upper" then
+                    if allowed == "upper" then
                         textBoxValues.Text = textBoxValues.Text:upper()
                     end
                 end)
 
                 textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "all" or format == "" then
+                    if allowed == "all" or allowed == "" then
                         textBoxValues.Text = textBoxValues.Text
                     end
                 end)
@@ -1859,16 +1857,6 @@ function library:Menu(key)
 
                 textBoxValues.FocusLost:Connect(function()
                     TweenService:Create(textbox, TweenTable["TextBox"], {BackgroundColor3 = Color3.fromRGB(60, 60, 60)}):Play()
-                end)
-
-                textBoxValues.FocusLost:Connect(function(enterPressed)
-                    if not autoexec then
-                        if enterPressed then
-                            callback(textBoxValues.Text)
-                        end
-                    else
-                        callback(textBoxValues.Text)
-                    end
                 end)
 
                 UpdatePageSize()
@@ -1993,8 +1981,8 @@ function library:Menu(key)
                 textBoxValues.Size = UDim2.new(0, 394, 0, 20)
                 textBoxValues.Font = Enum.Font.Code
                 textBoxValues.PlaceholderColor3 = Color3.fromRGB(140, 140, 140)
-                textBoxValues.PlaceholderText = place
-                textBoxValues.Text = default
+                textBoxValues.PlaceholderText = placehold
+                textBoxValues.Text = normal
                 textBoxValues.TextColor3 = Color3.fromRGB(190, 190, 190)
                 textBoxValues.TextSize = 14.000
                 textBoxValues.TextXAlignment = Enum.TextXAlignment.Left
@@ -2041,25 +2029,25 @@ function library:Menu(key)
                 UpdatePageSize()
 
                 textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "numbers" then
+                    if allowed == "numbers" then
                         textBoxValues.Text = textBoxValues.Text:gsub("%D+", "")
                     end
                 end)
 
                 textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "lower" then
+                    if allowed == "lower" then
                         textBoxValues.Text = textBoxValues.Text:lower()
                     end
                 end)
 
                 textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "upper" then
+                    if allowed == "upper" then
                         textBoxValues.Text = textBoxValues.Text:upper()
                     end
                 end)
 
                 textBoxValues:GetPropertyChangedSignal("Text"):Connect(function()
-                    if format == "all" or format == "" then
+                    if allowed == "all" or allowed == "" then
                         textBoxValues.Text = textBoxValues.Text
                     end
                 end)
@@ -2078,16 +2066,6 @@ function library:Menu(key)
 
                 textBoxValues.FocusLost:Connect(function()
                     TweenService:Create(textbox, TweenTable["TextBox"], {BackgroundColor3 = Color3.fromRGB(60, 60, 60)}):Play()
-                end)
-
-                textBoxValues.FocusLost:Connect(function(enterPressed)
-                    if not autoexec then
-                        if enterPressed then
-                            callback(textBoxValues.Text)
-                        end
-                    else
-                        callback(textBoxValues.Text)
-                    end
                 end)
 
                 local TextboxFunctions = {}
@@ -2446,7 +2424,7 @@ function library:Menu(key)
             values = values or {
                 min = values.min or 0,
                 max = values.max or 100,
-                default = values.default or 0
+                normal = values.normal or 0
             }
             callback = callback or function() end
 
@@ -2570,23 +2548,23 @@ function library:Menu(key)
             sliderValue.Position = UDim2.new(0.577319562, 0, 0, 0)
             sliderValue.Size = UDim2.new(0, 169, 0, 15)
             sliderValue.Font = Enum.Font.Code
-            sliderValue.Text = values.default
+            sliderValue.Text = values.normal
             sliderValue.TextColor3 = Color3.fromRGB(140, 140, 140)
             sliderValue.TextSize = 14.000
             sliderValue.TextXAlignment = Enum.TextXAlignment.Right
 
 
             local calc1 = values.max - values.min
-            local calc2 = values.default - values.min
+            local calc2 = values.normal - values.min
             local calc3 = calc2 / calc1
             local calc4 = calc3 * sliderBackground.AbsoluteSize.X
             local Calculation = calc4
             sliderIndicator.Size = UDim2.new(0, Calculation, 0, 12)
-            sliderValue.Text = values.default
+            sliderValue.Text = values.normal
 
             CreateTween("slider_drag", 0.008)
 
-            local ValueNum = values.default
+            local ValueNum = values.normal
             local slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1)
             sliderValue.Text = slideText
             local function UpdateSlider()
