@@ -178,7 +178,7 @@ function library:GetYear(type)
         return os.date("%Y")
     end
 end]]
-
+--[[
 function library:MenuNotifications(text, duration, callback)
     for i,v in next, CoreGuiService:GetChildren() do
         if v.name == "Notifications" then
@@ -362,7 +362,7 @@ function library:MenuNotifications(text, duration, callback)
         return NotificationFunctions
     end
     return Notification
-end
+end]]
 
 function library:Menu(key)
     for _,v in next, CoreGuiService:GetChildren() do
@@ -987,7 +987,7 @@ function library:Menu(key)
             return ButtonFunctions
         end
         --
-
+        --[[
         function Components:NewSection(text)
             text = text or "section"
 
@@ -1070,7 +1070,7 @@ function library:Menu(key)
             end
             --
             return SectionFunctions
-        end
+        end]]
 
         --
 
@@ -1406,7 +1406,7 @@ function library:Menu(key)
             return ToggleFunctions
         end
 
-        function Components:NewKeybind(text, default, callback)
+        --[[function Components:NewKeybind(text, default, callback)
             text = text or "keybind"
             default = default or Enum.KeyCode.P
             callback = callback or function() end
@@ -1633,7 +1633,7 @@ function library:Menu(key)
                 return KeybindFunctions
             end
             return KeybindFunctions
-        end
+        end]]
         --
         function Components:NewTextbox(text, normal, placehold, allowed, type, callback)
             text = text or "text box"
@@ -2417,6 +2417,7 @@ function library:Menu(key)
             return SelectorFunctions
         end
         --
+        --[[
         function Components:NewSlider(text, compare, middlesign, values, callback)
             text = text or "slider"
             compare = compare or false
@@ -2675,8 +2676,9 @@ function library:Menu(key)
                 return SliderFunctions
             end
             return SliderFunctions
-        end
-        --
+        end]]
+        -- 
+        --[[
         function Components:NewSeperator()
             local sectionFrame = Instance.new("Frame")
             local sectionLayout = Instance.new("UIListLayout")
@@ -2722,7 +2724,7 @@ function library:Menu(key)
                 return SeperatorFunctions
             end
             return SeperatorFunctions
-        end
+        end]]
         --
         function Components:Open()
             TabLibrary.CurrentTab = title
