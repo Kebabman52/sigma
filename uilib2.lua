@@ -724,10 +724,8 @@ function library:Menu(key)
             local buttonFrame = Instance.new("Frame")
             local buttonLayout = Instance.new("UIListLayout")
             local button = Instance.new("TextButton")
-            local buttonCorner = Instance.new("UICorner")
             local buttonBackground = Instance.new("Frame")
             local buttonGradient = Instance.new("UIGradient")
-            local buttonBackCorner = Instance.new("UICorner")
             local buttonLabel = Instance.new("TextLabel")
 
             buttonFrame.Name = "buttonFrame"
@@ -754,10 +752,6 @@ function library:Menu(key)
             button.TextColor3 = Color3.fromRGB(0, 0, 0)
             button.TextSize = 14.000
 
-            buttonCorner.CornerRadius = UDim.new(0, 2)
-            buttonCorner.Name = "buttonCorner"
-            buttonCorner.Parent = button
-
             buttonBackground.Name = "buttonBackground"
             buttonBackground.Parent = button
             buttonBackground.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -769,10 +763,6 @@ function library:Menu(key)
             buttonGradient.Rotation = 90
             buttonGradient.Name = "buttonGradient"
             buttonGradient.Parent = buttonBackground
-
-            buttonBackCorner.CornerRadius = UDim.new(0, 2)
-            buttonBackCorner.Name = "buttonBackCorner"
-            buttonBackCorner.Parent = buttonBackground
 
             buttonLabel.Name = "buttonLabel"
             buttonLabel.Parent = buttonBackground
@@ -2481,15 +2471,12 @@ function library:Menu(key)
             local sliderFolder = Instance.new("Folder")
             local textboxFolderLayout = Instance.new("UIListLayout")
             local sliderButton = Instance.new("TextButton")
-            local sliderButtonCorner = Instance.new("UICorner")
             local sliderBackground = Instance.new("Frame")
-            local sliderButtonCorner_2 = Instance.new("UICorner")
             local sliderBackgroundGradient = Instance.new("UIGradient")
             local sliderBackgroundLayout = Instance.new("UIListLayout")
             local sliderIndicator = Instance.new("Frame")
             local sliderIndicatorStraint = Instance.new("UISizeConstraint")
             local sliderIndicatorGradient = Instance.new("UIGradient")
-            local sliderIndicatorCorner = Instance.new("UICorner")
             local sliderBackgroundPadding = Instance.new("UIPadding")
             local sliderButtonLayout = Instance.new("UIListLayout")
             local sliderLabel = Instance.new("TextLabel")
@@ -2526,19 +2513,11 @@ function library:Menu(key)
             sliderButton.TextColor3 = Color3.fromRGB(0, 0, 0)
             sliderButton.TextSize = 14.000
 
-            sliderButtonCorner.CornerRadius = UDim.new(0, 2)
-            sliderButtonCorner.Name = "sliderButtonCorner"
-            sliderButtonCorner.Parent = sliderButton
-
             sliderBackground.Name = "sliderBackground"
             sliderBackground.Parent = sliderButton
             sliderBackground.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             sliderBackground.Size = UDim2.new(0, 394, 0, 14)
             sliderBackground.ClipsDescendants = true
-
-            sliderButtonCorner_2.CornerRadius = UDim.new(0, 2)
-            sliderButtonCorner_2.Name = "sliderButtonCorner"
-            sliderButtonCorner_2.Parent = sliderBackground
 
             sliderBackgroundGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 34, 34)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 28, 28))}
             sliderBackgroundGradient.Rotation = 90
@@ -2562,13 +2541,9 @@ function library:Menu(key)
             sliderIndicatorStraint.MaxSize = Vector2.new(392, 12)
 
             sliderIndicatorGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))}
-            sliderIndicatorGradient.Rotation = 90
+            sliderIndicatorGradient.Rotation = 0
             sliderIndicatorGradient.Name = "sliderIndicatorGradient"
             sliderIndicatorGradient.Parent = sliderIndicator
-
-            sliderIndicatorCorner.CornerRadius = UDim.new(0, 2)
-            sliderIndicatorCorner.Name = "sliderIndicatorCorner"
-            sliderIndicatorCorner.Parent = sliderIndicator
 
             sliderBackgroundPadding.Name = "sliderBackgroundPadding"
             sliderBackgroundPadding.Parent = sliderBackground
