@@ -1082,12 +1082,9 @@ function library:Menu(key)
             local toggleButton = Instance.new("TextButton")
             local toggleLayout = Instance.new("UIListLayout")
             local toggleEdge = Instance.new("Frame")
-            local toggleEdgeCorner = Instance.new("UICorner")
             local toggle = Instance.new("Frame")
-            local toggleCorner = Instance.new("UICorner")
             local toggleGradient = Instance.new("UIGradient")
             local toggleDesign = Instance.new("Frame")
-            local toggleDesignCorner = Instance.new("UICorner")
             local toggleDesignGradient = Instance.new("UIGradient")
             local toggleLabel = Instance.new("TextLabel")
             local toggleLabelPadding = Instance.new("UIPadding")
@@ -1117,20 +1114,12 @@ function library:Menu(key)
             toggleEdge.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
             toggleEdge.Size = UDim2.new(0, 18, 0, 18)
 
-            toggleEdgeCorner.CornerRadius = UDim.new(0, 2)
-            toggleEdgeCorner.Name = "toggleEdgeCorner"
-            toggleEdgeCorner.Parent = toggleEdge
-
             toggle.Name = "toggle"
             toggle.Parent = toggleEdge
             toggle.AnchorPoint = Vector2.new(0.5, 0.5)
             toggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             toggle.Position = UDim2.new(0.5, 0, 0.5, 0)
             toggle.Size = UDim2.new(0, 16, 0, 16)
-
-            toggleCorner.CornerRadius = UDim.new(0, 2)
-            toggleCorner.Name = "toggleCorner"
-            toggleCorner.Parent = toggle
 
             toggleGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(34, 34, 34)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(28, 28, 28))}
             toggleGradient.Rotation = 90
@@ -1143,10 +1132,6 @@ function library:Menu(key)
             toggleDesign.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             toggleDesign.BackgroundTransparency = 1.000
             toggleDesign.Position = UDim2.new(0.5, 0, 0.5, 0)
-
-            toggleDesignCorner.CornerRadius = UDim.new(0, 2)
-            toggleDesignCorner.Name = "toggleDesignCorner"
-            toggleDesignCorner.Parent = toggleDesign
 
             toggleDesignGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(61, 135, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 94, 208))}
             toggleDesignGradient.Rotation = 90
