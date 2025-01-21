@@ -2878,7 +2878,7 @@ function library:Menu(key)
             CreateTween("slider_drag", 0.008)
 
             local ValueNum = values.default
-            local slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) .. ValueNum
+            local slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1)
             sliderValue.Text = slideText
             local function UpdateSlider()
                 TweenService:Create(sliderIndicator, TweenTable["slider_drag"], {Size = UDim2.new(0, math.clamp(Mouse.X - sliderIndicator.AbsolutePosition.X, 0, sliderBackground.AbsoluteSize.X), 0, 12)}):Play()
@@ -2897,7 +2897,7 @@ function library:Menu(key)
                 moveconnection = Mouse.Move:Connect(function()
                     ValueNum = math.floor((((tonumber(values.max) - tonumber(values.min)) / sliderBackground.AbsoluteSize.X) * sliderIndicator.AbsoluteSize.X) + tonumber(values.min))
                     
-                    slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) ..ValueNum
+                    slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1)
                     sliderValue.Text = slideText
 
                     pcall(function()
@@ -2914,7 +2914,7 @@ function library:Menu(key)
                     if Mouse_2.UserInputType == Enum.UserInputType.MouseButton1 then
                         ValueNum = math.floor((((tonumber(values.max) - tonumber(values.min)) / sliderBackground.AbsoluteSize.X) * sliderIndicator.AbsoluteSize.X) + tonumber(values.min))
                         
-                        slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) .. ValueNum
+                        slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1)
                         sliderValue.Text = slideText
 
                         pcall(function()
@@ -2941,7 +2941,7 @@ function library:Menu(key)
                 local ncalc3 = ncalc2 * sliderBackground.AbsoluteSize.X
                 local nCalculation = ncalc3
                 sliderIndicator.Size = UDim2.new(0, nCalculation, 0, 12)
-                slideText = compare and new .. middlesign .. tostring(values.max - 1) .. new
+                slideText = compare and new .. middlesign .. tostring(values.max - 1)
                 sliderValue.Text = slideText
                 return SliderFunctions
             end
@@ -2949,14 +2949,14 @@ function library:Menu(key)
             function SliderFunctions:Max(new)
                 new = new or values.max
                 values.max = new + 1
-                slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1) .. ValueNum
+                slideText = compare and ValueNum .. middlesign .. tostring(values.max - 1)
                 return SliderFunctions
             end
             --
             function SliderFunctions:Min(new)
                 new = new or values.min
                 values.min = new
-                slideText = compare and new .. middlesign .. tostring(values.max - 1) .. ValueNum
+                slideText = compare and new .. middlesign .. tostring(values.max - 1)
                 TweenService:Create(sliderIndicator, TweenTable["slider_drag"], {Size = UDim2.new(0, math.clamp(Mouse.X - sliderIndicator.AbsolutePosition.X, 0, sliderBackground.AbsoluteSize.X), 0, 12)}):Play()
                 return SliderFunctions
             end
