@@ -554,7 +554,7 @@ function library:Menu(key)
         tabButtonStroke.Parent = tabButton
         tabButtonStroke.Color = Color3.fromRGB(61, 135, 255)
         tabButtonStroke.Thickness = 1
-
+        tabButtonStroke.ApplyStrokeMode = Border
         page.Name = "page"
         page.Parent = container
         page.Active = true
