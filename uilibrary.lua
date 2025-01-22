@@ -80,15 +80,8 @@ new(0, 4)
     tabButtonPadding.PaddingRight = UDim.new(0, 4)
     tabButtonPadding.PaddingTop = UDim.new(0, 4)
 
-    containerEdge.Name = "containerEdge"
-    containerEdge.Parent = background
-    containerEdge.AnchorPoint = Vector2.new(0.5, 0.5)
-    containerEdge.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-    containerEdge.Position = UDim2.new(0.637000024, 0, 0.536000013, 0)
-    containerEdge.Size = UDim2.new(0, 414, 0, 360)
-
     container.Name = "container"
-    container.Parent = containerEdge
+    container.Parent = background
     container.AnchorPoint = Vector2.new(0.5, 0.5)
     container.BackgroundColor3 = Color3.fromRGB(235, 235, 235)
     container.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -113,7 +106,6 @@ function library:Menu(key)
     key = key or Enum.KeyCode.Insert or library.key
 
     local screen = Instance.new("ScreenGui")
-    local edge = Instance.new("Frame")
     local background = Instance.new("Frame")
     local backgroundGradient = Instance.new("UIGradient")
     local headerLabel = Instance.new("TextLabel")
@@ -122,12 +114,10 @@ function library:Menu(key)
     local bar = Instance.new("Frame")
     local barGradient = Instance.new("UIGradient")
     local barLayout = Instance.new("UIListLayout")
-    local tabButtonsEdge = Instance.new("Frame")
     local tabButtons = Instance.new("Frame")
     local tabButtonsGradient = Instance.new("UIGradient")
     local tabButtonLayout = Instance.new("UIListLayout")
     local tabButtonPadding = Instance.new("UIPadding")
-    local containerEdge = Instance.new("Frame")
     local container = Instance.new("Frame")
     local containerGradient = Instance.new("UIGradient")
 
@@ -136,22 +126,16 @@ function library:Menu(key)
     screen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 
-    drag(edge, 0.04)
+    drag(background, 0.04)
     local CanChangeVisibility = true
     UserInputService.InputBegan:Connect(function(input)
         if CanChangeVisibility and input.KeyCode == key then
-            edge.Visible = not edge.Visible
+            background.Visible = not background.Visible
         end
     end)
-    edge.Name = "edge"
-    edge.Parent = screen
-    edge.AnchorPoint = Vector2.new(0.5, 0.5)
-    edge.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-    edge.Position = UDim2.new(0.5, 0, 0.5, 0)
-    edge.Size = UDim2.new(0, 594, 0, 406)
 
     background.Name = "background"
-    background.Parent = edge
+    background.Parent = screen
     background.AnchorPoint = Vector2.new(0.5, 0.5)
     background.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     background.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -202,16 +186,8 @@ function library:Menu(key)
     barLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
     barLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-
-    tabButtonsEdge.Name = "tabButtonsEdge"
-    tabButtonsEdge.Parent = background
-    tabButtonsEdge.AnchorPoint = Vector2.new(0.5, 0.5)
-    tabButtonsEdge.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-    tabButtonsEdge.Position = UDim2.new(0.1435, 0, 0.536000013, 0)
-    tabButtonsEdge.Size = UDim2.new(0, 152, 0, 360)
-
     tabButtons.Name = "tabButtons"
-    tabButtons.Parent = tabButtonsEdge
+    tabButtons.Parent = background
     tabButtons.AnchorPoint = Vector2.new(0.5, 0.5)
     tabButtons.BackgroundColor3 = Color3.fromRGB(235, 235, 235)
     tabButtons.ClipsDescendants = true
