@@ -1,9 +1,9 @@
--- / Locals
+-- [LOCALS]
 local Workspace = game:GetService("Workspace")
 local Player = game:GetService("Players").LocalPlayer
 local Mouse = Player:GetMouse()
 
--- / Services
+-- [Services]
 local UserInputService = game:GetService("UserInputService")
 local TextService = game:GetService("TextService")
 local TweenService = game:GetService("TweenService")
@@ -11,7 +11,7 @@ local RunService = game:GetService("RunService")
 local CoreGuiService = game:GetService("CoreGui")
 local ContentService = game:GetService("ContentProvider")
 local TeleportService = game:GetService("TeleportService")
--- / Tween table & function
+-- [Tween table & function]
 local TweenTable = {
     Default = {
         TweenInfo.new(0.17, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, 0, false, 0)
@@ -29,7 +29,7 @@ local CreateTween = function(name, speed, style, direction, loop, reverse, delay
     TweenTable[name] = TweenInfo.new(speed, style, direction, loop, reverse, delay)
 end
 
--- / Dragging
+-- [Dragging]
 local drag = function(obj, latency)
     obj = obj
     latency = latency or 0.06
